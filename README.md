@@ -19,16 +19,16 @@ Qt的sqlite加密.
 
 
 
-QSqlQuery* MySqlite::GetQSqlQuery(){
-    if(driver != nullptr && qSqlQuery == nullptr){
-        QSqlDatabase db = QSqlDatabase::addDatabase(driver);
-        db.setDatabaseName(dbName);
-
-        if(db.open())
-        {
-            qSqlQuery = new QSqlQuery(db);
-            return qSqlQuery;
+    QSqlQuery* MySqlite::GetQSqlQuery(){
+        if(driver != nullptr && qSqlQuery == nullptr){
+            QSqlDatabase db = QSqlDatabase::addDatabase(driver);
+            db.setDatabaseName(dbName);
+    
+            if(db.open())
+            {
+                qSqlQuery = new QSqlQuery(db);
+                return qSqlQuery;
+            }
         }
+        return qSqlQuery;
     }
-    return qSqlQuery;
-}
