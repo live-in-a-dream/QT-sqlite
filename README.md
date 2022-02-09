@@ -16,3 +16,19 @@ Qt的sqlite加密.
         }
     }
     Log::d("Sqlite加密插件失败!");
+
+
+
+QSqlQuery* MySqlite::GetQSqlQuery(){
+    if(driver != nullptr && qSqlQuery == nullptr){
+        QSqlDatabase db = QSqlDatabase::addDatabase(driver);
+        db.setDatabaseName(dbName);
+
+        if(db.open())
+        {
+            qSqlQuery = new QSqlQuery(db);
+            return qSqlQuery;
+        }
+    }
+    return qSqlQuery;
+}
