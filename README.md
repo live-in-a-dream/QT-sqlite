@@ -23,7 +23,7 @@ Qt的sqlite加密.
         if(driver != nullptr && qSqlQuery == nullptr){
             QSqlDatabase db = QSqlDatabase::addDatabase(driver);
             db.setDatabaseName(dbName);
-    
+            db.setPassword("123456");
             if(db.open())
             {
                 qSqlQuery = new QSqlQuery(db);
